@@ -9,7 +9,7 @@ Object.assign=require('object-assign')
 ////////////////////////////
 var DB_API;
 //app.get('/dbInit', function(req, res) {
-DB_API=require("./dbApiService.js");
+DB_API=require("dbApiService.js");
 DB_API.init();
 //});
 ///////////////////////////
