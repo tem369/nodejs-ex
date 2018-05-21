@@ -1,0 +1,27 @@
+<div ng-controller="oneProductController as oPC">
+
+    <!--shown path folder -->
+<div>
+    <p > <a class="w3-btn w3-white" ui-sref="home"><span class="w3-large">Home</span></a> >
+        <a class="w3-btn w3-white" ui-sref="skiBoots"><span class="w3-large">SkiBoots</span></a> >
+        <a class="w3-btn w3-white" ui-sref="backToLast"><span class="w3-large">Back </span> </a>
+    </p>
+</div>
+
+
+<!--shown product content-->
+<div>
+    <img ng-src=" {{oPC.currentProducts[oPC.params].image}}" alt="Do not find image" style="height:200px;width:200px;">
+    <p class="w3-xlarge">{{oPC.currentProducts[oPC.params].name}} {{item.price|currency}}</p>
+</div>
+
+    <!--show add to cart -->
+    <div>
+        Quantity:<input type="number" min="1" size="10" ng-model="oPC.quantity">
+    </div>
+    <div class="w3-container w3-yellow w3-btn" ng-click="oPC.addOneToCart(oPC.currentProducts[oPC.params],oPC.quantity)" >
+        <div>
+            <span class="w3-badge w3-yellow w3-btn w3-card-16 w3-border">+</span><span> Add to Cart</span>
+        </div>
+    </div>
+</div>

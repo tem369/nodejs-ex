@@ -1,0 +1,73 @@
+<!--two parts outside-->
+<div ng-controller="showProductsController as sP" class="w3-row-padding" style="width:100%">
+
+    <!--left part-->
+    <div class="w3-container w3-col " style="width:20%">
+        <form ng-repeat="(key,value1) in sP.currentFilterCtrl"
+              class="w3-container w3-border w3-round-large w3-padding w3-margin-bottom">
+            <div><h3>{{key}}</h3></div>
+            <div ng-repeat="(subKey,subValue) in value1">
+                <input class="w3-check w3-btn" type="checkbox" ng-model="value1[subKey].value" ng-click="sP.activate();">
+                <label class="w3-validate">{{value1[subKey].show}}</label>
+                <br>
+            </div>
+        </form>
+    </div>
+
+
+
+    <!--right part-->
+    <div class="w3-container w3-rest">
+        <!--show image, name, and compareStatus of every product -->
+        <div class="w3-container">
+            <table>
+                <tr ng-repeat="rows in sP.twoDim.slice((sP.currentPage-1)*sP.pageSize,sP.currentPage*sP.pageSize)"
+                    ng-init="rowIndex=$index" )>
+                    <td ng-repeat="item in rows" class="w3-container w3-padding w3-col w3-center"
+                        ng-style="{'width': sP.width}">
+                        <a ui-sref="oneProduct({id:(sP.currentPage-1)*sP.pageSize*sP.rowSize+rowIndex*sP.rowSize+$index})"
+                           class=" w3-white">
+                            <!--<div>-->
+                            <img ng-src=" {{item.image}}" alt="Do not find image" style="height:200px;width:200px;">
+                            <!--</div>-->
+                            <!--<div>-->
+                            <p class="w3-xlarge">{{item.name}} {{item.price|currency}}</p>
+                            <!--</div>-->
+                        </a>
+
+                        <!--compareStatus of every product-->
+                        <!--ng-model: sP.shownProductsCompare[(sP.currentPage-1)*sP.pageSize*sP.rowSize+rowIndex*sP.rowSize+$index], compare status-->
+                        <!--ng-click: sP.updateCompare(index,status)-->
+                        <input class="w3-check" type="checkbox"
+                               ng-model="sP.shownProductsCompare[(sP.currentPage-1)*sP.pageSize*sP.rowSize+rowIndex*sP.rowSize+$index]"
+                               ng-click="sP.updateCompare((sP.currentPage-1)*sP.pageSize*sP.rowSize+rowIndex*sP.rowSize+$index
+                               ,sP.shownProductsCompare[(sP.currentPage-1)*sP.pageSize*sP.rowSize+rowIndex*sP.rowSize+$index]);">
+                        {{}}
+                        <!--mC.updateComparedProducts();-->
+                        <label class="w3-validate">Compare</label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+<!--show pagination-->
+        <div class="w3-container w3-center w3-center">
+            <ul class="w3-container w3-pagination w3-xlarge">
+                <li ng-show="sP.shownProductPages.length>0">
+                    <a class="w3-btn w3-white w3-hover-grey"
+                       ng-click="sP.currentPage=(sP.currentPage>1)?sP.currentPage-1:sP.currentPage">&laquo</a>
+                </li>
+                <li ng-repeat="page in sP.shownProductPages">
+                    <a class="w3-btn w3-hover-grey" ng-class="(page===sP.currentPage)?'w3-grey':'w3-white'"
+                       ng-click="sP.currentPage=page">{{page}}</a>
+                </li>
+                <li ng-show="sP.shownProductPages.length>0">
+                    <a class="w3-btn w3-white w3-hover-grey"
+                       ng-click="sP.currentPage=(sP.currentPage<sP.shownProductPages.length)?sP.currentPage+1:sP.currentPage">&raquo</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

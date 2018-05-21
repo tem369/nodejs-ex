@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>ski</title>
+    <script src="showProductCtrl.js"></script>
+</head>
+<body ng-app="skiApp">
+
+<!--title-->
+<div class="w3-container  w3-light-blue">
+
+    <h1 class="w3-container w3-center">
+        国际滑雪器件中心
+    </h1>
+    <div class="w3-container" style="width:100%">
+        <div class="w3-col s9">
+            &nbsp;
+        </div>
+        <div class="w3-col w3-padding s3 w3-green w3-round-large">
+            <div class="w3-col s9">
+                <input class="w3-input w3-hover-light-grey w3-round" type="text" ng-model="search_text">
+            </div>
+            <div class="w3-col s3 w3-large">
+                Search
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--main menu-->
+<ul class=" w3-container w3-navbar w3-teal w3-large">
+    <li><a href="#">Home</a></li>
+    <li class="w3-dropdown-hover">
+        <a href="#">滑雪产品</a>
+        <div class="w3-dropdown-content w3-card-2 w3-teal">
+            <a href="#">滑雪板 </a>
+            <a href="#">滑雪单板 </a>
+            <a href="#">滑雪衣服 </a>
+            <a href="#">滑雪裤子 </a>
+        </div>
+    </li>
+
+    <li><a href="#">登山产品</a></li>
+    <li><a href="#">户外旅游</a></li>
+    <li><a href="#">促销产品</a></li>
+</ul>
+
+<!--two parts outside-->
+<div ng-controller="showProducts as sP" class="w3-row-padding" style="width:100%">
+    <!--left part-->
+    <div class="w3-container w3-col " style="width:20%">
+
+        <form class="w3-container w3-border w3-round-large w3-padding w3-margin-bottom">
+            <div><h3>Color</h3></div>
+            <input class="w3-check w3-btn" type="checkbox" ng-click="sP.red=!sP.red; sP.activate();">
+            <label class="w3-validate">Red</label>
+            <br>
+            <input class="w3-check w3-btn" type="checkbox" ng-click="sP.white=!sP.white; sP.activate();">
+            <label class="w3-validate">White</label>
+            <br>
+            <input class="w3-check w3-btn" type="checkbox" ng-click="sP.blue=!sP.blue; sP.activate();">
+            <label class="w3-validate">Blue</label>
+        </form>
+
+        <form class="w3-container w3-border w3-round-large w3-padding w3-margin-bottom">
+            <div><h3>Price</h3></div>
+            <input class="w3-check w3-btn" type="checkbox" ng-click="sP.price0_100=!sP.price0_100; sP.activate();">
+            <label class="w3-validate">$0-$100</label>
+            <br>
+            <input class="w3-check w3-btn" type="checkbox" ng-click="sP.price100_200=!sP.price100_200; sP.activate();">
+            <label class="w3-validate">$100-$200</label>
+            <br>
+            <input class="w3-check w3-btn" type="checkbox" ng-click="sP.price200_2000=!sP.price200_2000; sP.activate();">
+            <label class="w3-validate">$200-$2000</label>
+            <br>
+
+            <input class="w3-check w3-btn" type="checkbox" ng-click="sP.price2000_up=!sP.price2000_up; sP.activate();">
+            <label class="w3-validate">$2000 and Up</label>
+        </form>
+    </div>
+
+    <!--right part-->
+    <div  class="w3-container w3-rest">
+        <!--show items of product -->
+        <div class="w3-container">
+        <table>
+            <tr ng-repeat="rows in sP.twoDim.slice((sP.currentPage-1)*sP.pageSize,sP.currentPage*sP.pageSize)" )>
+                <td class="shownImages" ng-repeat="item in rows" class="w3-container w3-padding w3-col w3-center"
+                    ng-style="{'width': sP.width}">
+                    <a href="" class=" w3-white" ng-click="">
+                        <!--<div>-->
+                            <img src=" {{item.imageName}}" alt="Do not find image" style="height:200px;width:200px;">
+                        <!--</div>-->
+                        <!--<div>-->
+                            <p class="w3-xlarge">{{item.name}} {{item.price|currency}}</p>
+                        <!--</div>-->
+                    </a>
+                </td>
+            </tr>
+        </table>
+</div>
+        <!--pagination-->
+        <div class="w3-container w3-center w3-center">
+            <ul class="w3-container w3-pagination w3-xlarge">
+                <li ng-show="sP.shownProductPages.length>0">
+                    <a class="w3-btn w3-white w3-hover-grey"
+                       ng-click="sP.currentPage=(sP.currentPage>1)?sP.currentPage-1:sP.currentPage">&laquo</a>
+                </li>
+                <li ng-repeat="page in sP.shownProductPages">
+                    <a class="w3-btn w3-hover-grey" ng-class="(page===sP.currentPage)?'w3-grey':'w3-white'"
+                       ng-click="sP.currentPage=page">{{page}}</a>
+                </li>
+                <li ng-show="sP.shownProductPages.length>0">
+                    <a class="w3-btn w3-white w3-hover-grey"
+                       ng-click="sP.currentPage=(sP.currentPage<sP.shownProductPages.length)?sP.currentPage+1:sP.currentPage">&raquo</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<!--footer-->
+<footer class="w3-container w3-padding  w3-margin w3-margin-top w3-center w3-blue" style="height:200px">
+    <br>
+    <br>
+    <br>
+    <span class="w3-margin-right" style="height:50%">
+        <a href="">在线服务</a>
+    </span>
+    <span class="w3-margin-right" style="height:50%">
+        <a href="">物流服务</a>
+    </span>
+    <span class="w3-margin-right" style="height:50%">
+        <a href="">联系我们</a>
+    </span>
+</footer>
+
+</body>
+</html>

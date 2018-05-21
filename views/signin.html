@@ -1,0 +1,14 @@
+<div ng-controller="signinController as sC">
+    <div class="w3-container w3-border ">
+        <p class="w3-large">Signin</p>
+
+        <p>Email</p>
+        <input type="email" ng-model="sC.email">
+        <span ng-show="sC.accountNotExist" class="w3-btn w3-green"> no this account, Register </span>
+        <p>Password</p>
+        <input type="password" ng-model="sC.password">
+        <span ng-show="sC.forgetPassword" class="w3-btn w3-green"> forget your password, Find your password</span>
+
+        <button type="submit" ng-click="sC.submit()">Submit</button>
+    </div>
+</div>
