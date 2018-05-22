@@ -6,12 +6,12 @@ var express = require('express'),
 Object.assign=require('object-assign')
 
 
-////////////////////////////
-var DB_API;
-//app.get('/dbInit', function(req, res) {
-DB_API=require("dbApiService.js");
-DB_API.init();
-//});
+// ////////////////////////////
+// var DB_API;
+// //app.get('/dbInit', function(req, res) {
+// DB_API=require("dbApiService.js");
+// DB_API.init();
+// //});
 ///////////////////////////
 
 
@@ -89,20 +89,20 @@ app.get('/', function (req, res) {
 
 
 
-///////////////////////////
-app.get('/data', function(req, res) {
-
-    //res.sendfile('t1Front.html');
-    //console.log(req);
-    DB_API.query(req.query.SQL,function(data) {
-        //res.json(DB_API.query.results);
-        res.send(DB_API.query.results);
-        //    res.json(data);
-    });
-});
-app.use(express.static('scripts'));
-app.use(express.static('images'));
-////////////////////////////
+// ///////////////////////////
+// app.get('/data', function(req, res) {
+//
+//     //res.sendfile('t1Front.html');
+//     //console.log(req);
+//     DB_API.query(req.query.SQL,function(data) {
+//         //res.json(DB_API.query.results);
+//         res.send(DB_API.query.results);
+//         //    res.json(data);
+//     });
+// });
+// app.use(express.static('scripts'));
+// app.use(express.static('images'));
+// ////////////////////////////
 
 
 
