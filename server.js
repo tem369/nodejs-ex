@@ -7,6 +7,8 @@ Object.assign=require('object-assign')
 
 
 // ////////////////////////////
+app.use(express.static('scripts'));
+app.use(express.static('images'));
 // var DB_API;
 // //app.get('/dbInit', function(req, res) {
 // DB_API=require("dbApiService.js");
@@ -100,8 +102,7 @@ app.get('/', function (req, res) {
 //         //    res.json(data);
 //     });
 // });
-// app.use(express.static('scripts'));
-// app.use(express.static('images'));
+
 // ////////////////////////////
 
 
