@@ -79,7 +79,7 @@ app.get('/showProducts.html', function(req, res) {
 
 app.get('/home.html', function(req, res) {
     //res.sendfile('test1.html');
-    res.sendfile('home.html');
+    res.sendfile('showProducts.html');
 });
 // .state('skiBoots', {
 //     url: "/skiBoots",
