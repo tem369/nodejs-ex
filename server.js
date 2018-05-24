@@ -68,6 +68,11 @@ var initDb = function(callback) {
   });
 };
 
+app.get('/home.html', function(req, res) {
+    //res.sendfile('test1.html');
+    res.sendfile('home.html');
+});
+
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
