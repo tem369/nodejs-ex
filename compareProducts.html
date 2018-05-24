@@ -1,0 +1,44 @@
+
+
+<div ng-controller="compareProductsController as cPC" class="w3-container">
+
+    <div>
+        <p > <a class="w3-btn w3-white" ui-sref="home"><span class="w3-large">Home</span></a> >
+            <a class="w3-btn w3-white" ui-sref="skiBoots"><span class="w3-large">SkiBoots</span></a> >
+            <a class="w3-btn w3-white" ui-sref="backToLast"><span class="w3-large">Back </span> </a>
+        </p>
+    </div>
+
+    <table ng-show="cPC.compareProductsDetails.image.length!=0">
+        <tr>
+            <th>{{''}}</th>
+            <td   ng-repeat="item in cPC.compareProductsDetails.image track by $index">
+               <span class="w3-btn w3-white" ng-click="cPC.removeOneComparedProduct($index)"> {{"Remove"}}</span>
+            </td>
+        </tr>
+        <tr>
+            <th>{{''}}</th>
+            <td  ng-repeat="item in cPC.compareProductsDetails.image track by $index">
+                <img class="w3-white" ng-src=" {{item}}" alt="Do not find image" style="height:100px;width:100px;">
+            </td>
+
+        </tr>
+        <tr>
+            <th>{{''}}</th>
+            <td  ng-repeat="item in cPC.compareProductsDetails.name track by $index">
+                {{item}}
+            </td>
+
+        </tr>
+        <tr ng-repeat="(key,value) in cPC.compareProductsDetails track by $index">
+            <th>
+                {{key}}
+            </th>
+            <td ng-repeat="item in value">
+                {{item}}
+            </td>
+
+        </tr>
+    </table>
+
+</div>

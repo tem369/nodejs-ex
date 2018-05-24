@@ -1,0 +1,54 @@
+<div ng-controller="cartProcessController as cartPC">
+    <div>
+        <p > <a class="w3-btn w3-white" ui-sref="home"><span class="w3-large">Home</span></a> >
+            <a class="w3-btn w3-white" ui-sref="skiBoots"><span class="w3-large">SkiBoots</span></a> >
+            <a class="w3-btn w3-white" ui-sref="backToLast"><span class="w3-large">Back </span> </a>
+        </p>
+    </div>
+
+    <table class="w3-container w3-table ">
+        <tr class="w3-light-grey">
+            <th>
+                Products
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        <tr ng-repeat="item in cartPC.currentCart.products">
+            <td>
+                <img ng-src="{{item.image}}" alt="ca not find image" style="height:50px;width:50px;">
+                <span>{{item.name}}</span>
+            </td>
+            <td>
+                <input type="number" min="1" size="6" ng-model="cartPC.currentCart.quantity[$index]">
+            </td>
+            <td>
+                {{(cartPC.currentCart.quantity[$index])*(item.price)|currency}}
+            </td>
+            <td>
+                [<a href ng-click="cartPC.removeOneProduct($index);mC.getCurrentCartProductNum();">X</a>]
+            </td>
+        </tr>
+        <tr>
+        <td>
+        </td>
+            <td></td>
+            <td>Total: {{cartPC.getTotalPrice()|currency}}</td>
+        </tr>
+    </table>
+
+    <div class="w3-container w3-large w3-center">
+            <span class="w3-yellow w3-btn" ng-click=""> Proceed to Checkout </span>
+    </div>
+    <!--<div class="w3-ontainer w3-right">-->
+        <!---->
+    <!--</div>-->
+
+</div>

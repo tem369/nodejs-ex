@@ -1,0 +1,24 @@
+<div ng-controller="registerController as rC">
+
+    <div class="w3-container w3-border ">
+       <p class="w3-large">Create Account</p>
+   <form>
+        <p>Your name</p>
+       <input placeholder="Your name" ng-model="rC.name" required pattern=".{2,}" />
+
+        <p>Email</p>
+       <input placeholder="Email" ng-model="rC.email" required type="email" />
+       <span ng-show="rC.accountExistStatus" class="w3-red"> The account with this email already exist <span class="w3-btn w3-green"> Find your password</span> </span>
+        <p>Password</p>
+        <input placeholder="Password" type="password" required pattern=".{2,}" ng-model="rC.password" required/>
+        <p>Password again</p>
+        <input placeholder="Check Password" type="password" ng-model="rC.password1" required/>
+       <span ng-show="(rC.password!='') && (rC.password1 !='') && (rC.password != rC.password1)" class="w3-red"> password is not same</span>
+        <br>
+       <button type="submit" ng-click="rC.submit()">Submit</button>
+   </form>
+    </div>
+
+</div>
+
+
