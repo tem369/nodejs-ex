@@ -68,11 +68,59 @@ var initDb = function(callback) {
   });
 };
 
+
+//////////////////////////////////////
 app.get('/home.html', function(req, res) {
     //res.sendfile('test1.html');
     res.sendfile('home.html');
 });
 
+app.get('/showProducts.html', function(req, res) {
+    //res.sendfile('test1.html');
+    res.sendfile('showProducts.html');
+});
+
+// .state('skiBoots', {
+//     url: "/skiBoots",
+//     templateUrl: "showProducts.html",
+//     controller: 'showProductsController'
+// })
+//     .state('skiCloths', {
+//         url: "/skiCloths",
+//         templateUrl: "showProducts.html",
+//         controller: 'showProductsController'
+//     })
+//     .state('backToLast', {
+//         url: "/backToLast",
+//         templateUrl: "showProducts.html",
+//         controller: 'showProductsController'
+//     })
+//     .state('compareProducts', {
+//         url: "/compareProducts",
+//         templateUrl: "compareProducts.html",
+//         controller: "compareProductsController"
+//     })
+//     .state('cartProcess', {
+//         url: "/cartProcess",
+//         templateUrl: "cartProcess.html",
+//         controller: "cartProcessController"
+//     })
+//     .state('signin', {
+//         url: "/signin",
+//         templateUrl: "signin.html",
+//         controller: "signinController"
+//     })
+//     .state('register', {
+//         url: "/register",
+//         templateUrl: "register.html",
+//         controller: "registerController"
+//     })
+//     .state('oneProduct', {
+//         url: "/oneProduct/:id",
+//         templateUrl: "oneProductShown.html",
+
+
+//////////////////////////////////////////
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
