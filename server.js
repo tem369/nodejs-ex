@@ -70,16 +70,17 @@ var initDb = function(callback) {
 
 
 //////////////////////////////////////
-app.get('/home.html', function(req, res) {
-    //res.sendfile('test1.html');
-    res.sendfile('home.html');
-});
+
 
 app.get('/showProducts.html', function(req, res) {
     //res.sendfile('test1.html');
     res.sendfile('showProducts.html');
 });
 
+app.get('/home.html', function(req, res) {
+    //res.sendfile('test1.html');
+    res.sendfile('home.html');
+});
 // .state('skiBoots', {
 //     url: "/skiBoots",
 //     templateUrl: "showProducts.html",
